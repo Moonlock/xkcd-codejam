@@ -35,13 +35,7 @@ def talkTo(npc):
 	if npc == "":
 		print("Talk to whom?")
 	else:
-		world_obj.talkTo(npc)
-
-def get(item):
-	if item == "":
-		print("Get what?")
-	else:
-		player_obj.pickUpItem(item)
+		player_obj.talkTo(npc)
 
 def use(arg):
 	if arg == "":
@@ -75,7 +69,6 @@ def parseCommand(command, arg1="", arg2=""):
 	elif (command == "l") or (command == "look"): look(arg1)
 	elif command == "talk": talkTo(arg1)
 	elif (command == "i") or (command == "inv"): player_obj.displayInventory()
-	elif command == "get": get(arg1)
 	elif command == "give": give(arg1, arg2)
 	elif command == "use": use(arg1)
 

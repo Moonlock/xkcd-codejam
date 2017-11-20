@@ -60,15 +60,23 @@ class Player:
 			return True
 		return False
 
-	def give(self,item,npc):
+	def give(self,itemName,npcName):
+		item = self.getItem(itemName)
 		if item is None:
 			print("You don't have that item to give.")
-		elif self.world.getNpc(npc.name) is None
+			return
+
+		npc = self.world.getNpc(npcName)
+		if npc is None:
 			print("That person isn't here.")
-		else
-			npc.receiveItem(item)
+			return
 
+		npc.receiveItem(item)
 
-
-
-
+	def talkTo(self, npcName):
+		npc = self.world.getNpc(npcName)
+		if npc is not None:
+			npc.speak(self)
+		else:
+			print("That person is not here.")
+		
