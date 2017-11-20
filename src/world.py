@@ -102,6 +102,9 @@ class World:
 	def unlockStallman(self):
 		self.stallmanHouse.isLocked = False
 
+	def unlockCueball(self):
+		self.cueballHouse.isLocked = False
+
 	def createRooms(self):
 		meganHouse = self.Room()
 		self.stallmanHouse = self.Room()

@@ -33,15 +33,8 @@ class Player:
 
 		print("That is not here.")
 
-	def pickUpItem(self, itemName):
-		item = self.world.getItem(itemName)
-		if item is not None:
-			self.items.append(item)
-			self.items = sorted(self.items, key=lambda k: k.name)
-			self.world.removeItem(item)
-			print("You pick up the " + item.name + ".")
-		else:
-			print("That is not here.")
+	def receiveItem(self, item):
+		item = self.items.append(item)
 
 	def use(self, itemName):
 		item = self.getItem(itemName)
