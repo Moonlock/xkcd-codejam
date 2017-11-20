@@ -20,3 +20,32 @@ class Key(Item):
 			print("You unlock the door.")
 		else:
 			print("You can't use that here.")
+
+class A_loof(Item):
+	def __init__(self):
+		super(A_loof,self).__init__("A loof","You have no idea what this is, but something tells you it wants to escape your grasp.")
+
+class Sword(Item):
+	def __init__(self):
+		super(A_loof,self).__init__("Sword","A mystical weapon bestowed upon you by Stallman.")
+		
+class Message(Item):
+	def __init__(self):
+		super(A_loof,self).__init__("Message","A message for Bob. Eve might be interested in this.")	
+
+class Reply(Item):
+	def __init__(self):
+		super(A_loof,self).__init__("Reply","A message from Bob to Alice. Eve might want this.")
+
+class Laptop(Item):
+	def __init__(self):
+		super(A_loof,self).__init__("Laptop","Megan's Laptop. It's covered with Stickers.")	
+
+class Kindle(Item):
+	def __init__(self):
+		super(A_loof,self).__init__("Kindle","Wholly remarkable! An electronic Book.")			
+
+class Lockpicks(Item):
+	def __init__(self):
+		super(A_loof,self).__init__("Lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")	
+
