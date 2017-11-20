@@ -24,8 +24,6 @@ class Player:
 		print(self.items[-1].name + ".")
 
 	def look(self, targetName):
-		if self.world.lookNpc(targetName) == True:
-			return
 		if self.world.lookGround(targetName) == True:
 			return
 		if self.lookInventory(targetName) == True:

@@ -1,3 +1,5 @@
+import items
+
 class Npc(object):
 	
 	def __init__(self):
@@ -62,7 +64,7 @@ class Ponytail(Npc):
 		self.acceptDialog = ""
 		self.giveDialog = ""
 		self.wantedItem = "A loof"
-		self.returnedItem = "Kindle"	
+		self.returnedItem = "Kindle"
 
 class Megan(Npc):
 	def __init__(self):
@@ -113,5 +115,17 @@ class Eve(Npc):
 		self.declineDialog = ""
 		self.acceptDialog = ""
 		self.giveDialog = ""
-		self.wantedItem = ["Message","Reply"]
+		self.wantedItem = ["Message", "Reply"]
 		self.returnedItem = "Lockpicks"
+
+class Stallman(Npc):
+	def __init__(self):
+		super(Stallman,self).__init__()
+		self.name = "Stallman"
+		self.intro = ""
+		self.dialog = ""
+		self.declineDialog = ""
+		self.acceptDialog = ""
+		self.giveDialog = ""
+		self.wantedItem = []
+		self.returnedItem = items.Sword()

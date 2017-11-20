@@ -22,6 +22,7 @@ class World:
 
 	def __init__(self):
 		self.rooms = []
+		self.hasInfo = False
 		self.createRooms()
 
 	def move(self, newRoom):
@@ -70,13 +71,6 @@ class World:
 			print(element.name + ", ", end="")
 		print(myList[-1].name + ".")
 
-	def lookNpc(self, npcName):
-		npc = self.getNpc(npcName)
-		if npc != None:
-			npc.printDescription()
-			return True
-		return False
-
 	def lookGround(self, itemName):
 		item = self.getItem(itemName)
 		if item != None:
@@ -101,9 +95,18 @@ class World:
 
 	def unlockStallman(self):
 		self.stallmanHouse.isLocked = False
+		print("You unlock the door.")
 
 	def unlockCueball(self):
-		self.cueballHouse.isLocked = False
+		if self.hasInfo:
+			print("You ssh into your Mac, max out the volume, and send the message that you are locked outside.")
+			print("A few minutes later, your roomate opens the door.")
+			print("'You realize the doorbell works fine,' she says before returning inside.")
+			self.cueballHouse.isLocked = False
+		else:
+			print("You ssh into your Mac and send a message that you are locked outside.")
+			print("You wait several minutes, but the door doesn't open.")
+			print("You realize the volume must be too low, but you don't know how to set the volume from command line.  Maybe someone around here does?")
 
 	def createRooms(self):
 		meganHouse = self.Room()
@@ -128,10 +131,12 @@ class World:
 		meganHouse.name = "Megan's house"
 		meganHouse.desc = "The entire house is filled waist deep in playpen balls.  Megan stands in a corner, throwing balls across the room.  She seems to be sorting them by colour."
 		meganHouse.exits.append({"room": street0_0, "localName": "out"})
+		meganHouse.npcs.append(npc.Megan())
 
 		self.stallmanHouse.name = "Richard Stallman's house"
 		self.stallmanHouse.desc = ""
 		self.stallmanHouse.exits.append({"room": street0_1, "localName": "out"})
+		self.stallmanHouse.npcs.append(npc.Stallman())
 		self.stallmanHouse.isLocked = True
 
 		self.cueballHouse.name = "Cueball's house"
@@ -162,6 +167,7 @@ class World:
 		street1_0.desc = "Whenever your feet touch the pavement, you feel an inexplicable, deep-seated hatred of Vim."
 		street1_0.exits.append({"room": street0_0, "localName": "north"})
 		street1_0.exits.append({"room": street2_0, "localName": "south"})
+		street1_0.npcs.append(npc.BeretGuy())
 
 		street2_0.name = "Emacs Street"
 		street2_0.desc = "Whenever your feet touch the pavement, you feel an inexplicable, deep-seated hatred of Vim."
@@ -174,6 +180,7 @@ class World:
 		street3_0.exits.append({"room": street2_0, "localName": "north"})
 		street3_0.exits.append({"room": street3_1, "localName": "east"})
 		street3_0.exits.append({"room": street4_1, "localName": "southeast"})
+		street3_0.npcs.append(npc.Alice())
 
 		street4_1.name = "Emacs Street"
 		street4_1.desc = "Whenever your feet touch the pavement, you feel an inexplicable, deep-seated hatred of Vim."
@@ -185,6 +192,7 @@ class World:
 		street1_2.desc = "Whenever your feet touch the pavement, you feel an inexplicable, deep-seated hatred of Emacs."
 		street1_2.exits.append({"room": street0_2, "localName": "north"})
 		street1_2.exits.append({"room": street2_3, "localName": "southeast"})
+		street1_2.npcs.append(npc.Ponytail())
 
 		street2_3.name = "Vim Street"
 		street2_3.desc = "Whenever your feet touch the pavement, you feel an inexplicable, deep-seated hatred of Emacs."
@@ -202,12 +210,14 @@ class World:
 		street4_2.exits.append({"room": street3_2, "localName": "north"})
 		street4_2.exits.append({"room": street3_3, "localName": "northeast"})
 		street4_2.exits.append({"room": street4_1, "localName": "west"})
+		street4_2.npcs.append(npc.Bob())
 
 
 		street2_1.name = "Sublime Street"
 		street2_1.desc = ""
 		street2_1.exits.append({"room": street2_2, "localName": "east"})
 		street2_1.exits.append({"room": street2_0, "localName": "west"})
+		street2_1.npcs.append(npc.BlackHat())
 
 		street2_2.name = "Sublime Street"
 		street2_2.desc = ""
@@ -225,5 +235,6 @@ class World:
 		street3_2.exits.append({"room": street2_2, "localName": "north"})
 		street3_2.exits.append({"room": street4_2, "localName": "south"})
 		street3_2.exits.append({"room": street3_1, "localName": "west"})
+		street3_2.npcs.append(npc.Eve())
 
 		self.curRoom = street0_2

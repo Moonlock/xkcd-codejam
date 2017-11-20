@@ -11,7 +11,7 @@ def printHelp():
 	print("	go	[exit]")
 	print("	n/e/s/w/ne/nw/se/sw")
 	print("	l/look")
-	print("	l/look	[item/npc]")
+	print("	l/look	[item]")
 	print("	talk	[npc]")
 	print("	use	[item]")
 	print("	give	[item] [npc]")

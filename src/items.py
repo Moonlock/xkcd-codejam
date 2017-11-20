@@ -17,7 +17,6 @@ class Key(Item):
 	def use(self, world):
 		if(world.curRoom.name == "In front of Stallman's house"):
 			world.unlockStallman()
-			print("You unlock the door.")
 		else:
 			print("You can't use that here.")
 
@@ -41,6 +40,12 @@ class Laptop(Item):
 	def __init__(self):
 		super(Laptop,self).__init__("Laptop","Megan's Laptop. It's covered with stickers.")	
 
+	def use(self, world):
+		if(world.curRoom.name == "In front of Cueball's house"):
+			world.unlockCueball()
+		else:
+			print("You can't use that here.")
+
 class Kindle(Item):
 	def __init__(self):
 		super(Kindle,self).__init__("Kindle","Wholly remarkable! An electronic Book.")			
@@ -48,7 +53,7 @@ class Kindle(Item):
 class Lockpicks(Item):
 	def __init__(self):
 		super(Lockpicks,self).__init__("Lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")
-  def use(self, world):
+	def use(self, world):
 		if(world.curRoom.name == "In front of Stallman's house"):
 			world.unlockStallman()
 			print("You pick the lock to Stallman's door.  You hope he won't mind.")
