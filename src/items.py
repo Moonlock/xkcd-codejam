@@ -31,7 +31,7 @@ class Sword(Item):
 		
 class Message(Item):
 	def __init__(self):
-		super(Message,self).__init__("Message","A message for Bob. Eve might be interested in this.")	
+		super(Message,self).__init__("Message","A message for Bob. Eve might be interested in this.")
 
 class Reply(Item):
 	def __init__(self):
@@ -48,8 +48,13 @@ class Kindle(Item):
 class Lockpicks(Item):
 	def __init__(self):
 		super(Lockpicks,self).__init__("Lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")
+  def use(self, world):
+		if(world.curRoom.name == "In front of Stallman's house"):
+			world.unlockStallman()
+			print("You pick the lock to Stallman's door.  You hope he won't mind.")
+		else:
+			print("You can't use that here.")
 
 class Lint(Item):
 	def __init__(self):
 		super(Lint,self).__init__("Lint","A bit of lint you found in your pocket. Hopefully someone wants this because its all you have.")	
-

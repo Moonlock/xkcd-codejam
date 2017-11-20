@@ -19,11 +19,11 @@ class Npc(object):
 		self.new = False
 
 	def ReceiveItem(self,givenItem):
-		if self.wanteditem == givenItem.name
+		if self.wanteditem == givenItem.name:
 			print (self.acceptDialog)
 			self.removeItem()
 			self.giveItem()
-		else 
+		else:
 			print (self.declineDialog)
 
 	def giveItem(self):
@@ -54,7 +54,7 @@ class BeretGuy(Npc):
 		self.acceptDialog = ""
 		self.giveDialog = ""
 		self.wantedItem = "Lint"
-		self.returnedItem = items.A_loof
+		self.returnedItem = items.A_loof()
 
 class Ponytail(Npc):
 	def __init__(self):
@@ -67,20 +67,20 @@ class Ponytail(Npc):
 		self.acceptDialog = ""
 		self.giveDialog = ""
 		self.wantedItem = "A loof"
-		self.returnedItem = items.Kindle	
+		self.returnedItem = items.Kindle()
 
 class Megan(Npc):
 	def __init__(self):
 		super(Megan,self).__init__()
 		self.name = "Megan"
 		self.new = True
-	    self.intro = ""
+		self.intro = ""
 		self.dialog = ""
 		self.declineDialog = ""
 		self.acceptDialog = ""
 		self.giveDialog = ""
 		self.wantedItem = "Kindle"
-		self.returnedItem = items.Laptop
+		self.returnedItem = items.Laptop()
 
 class Bob(Npc):
 	def __init__(self):
@@ -93,7 +93,7 @@ class Bob(Npc):
 		self.acceptDialog = ""
 		self.giveDialog = ""
 		self.wantedItem = "Message"
-		self.returnedItem = items.Reply		
+		self.returnedItem = items.Reply()	
 
 class Alice(Npc):
 	def __init__(self):
@@ -106,7 +106,7 @@ class Alice(Npc):
 		self.acceptDialog = ""
 		self.giveDialog = ""
 		self.wantedItem = "Reply"
-		self.returnedItem = items.Key
+		self.returnedItem = items.Key()
 
 class Eve(Npc):
 	def __init__(self):
@@ -119,5 +119,5 @@ class Eve(Npc):
 		self.acceptDialog = ""
 		self.giveDialog = ""
 		self.wantedItem = ["Message","Reply"]
-		self.returnedItem = items.Lockpicks
+		self.returnedItem = items.Lockpicks()
 
