@@ -1,5 +1,6 @@
 from __future__ import print_function
 import string
+import npc
 
 # Fix input() vs raw_input() mess
 try: input = raw_input
@@ -60,3 +61,16 @@ class Player:
 			item.printDescription()
 			return True
 		return False
+
+	def give(self,item,npc):
+		if item is None:
+			print("You don't have that item to give.")
+		elif self.world.getNpc(npc.name) is None
+			print("That person isn't here.")
+		else
+			npc.receiveItem(item)
+
+
+
+
+
