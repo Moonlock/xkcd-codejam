@@ -7,9 +7,8 @@ except NameError: pass
 
 class Player:
 
-	def __init__(self, world, name):
+	def __init__(self, world):
 		self.world = world
-		self.name = name
 
 		self.items = []
 
@@ -23,6 +22,16 @@ class Player:
 		for item in self.items[:-1]:
 			print(item.name + ", ", end="")
 		print(self.items[-1].name + ".")
+
+	def look(self, targetName):
+		if self.world.lookNpc(targetName) == True:
+			return
+		if self.world.lookGround(targetName) == True:
+			return
+		if self.lookInventory(targetName) == True:
+			return
+
+		print("That is not here.")
 
 	def pickUpItem(self, itemName):
 		item = self.world.getItem(itemName)

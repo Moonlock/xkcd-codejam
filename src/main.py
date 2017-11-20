@@ -19,60 +19,74 @@ def printHelp():
 	print("	help")
 	print("	quit")
 
-def go(arg):
-	if arg == "":
+def go(exit):
+	if exit == "":
 		print("Go where?")
 	else:
-		world_obj.move(arg)
+		world_obj.move(exit)
 
-def look(arg):
-	if arg == "":
+def look(target):
+	if target == "":
 		world_obj.displayRoom()
 	else:
-		world_obj.look(arg, player_obj)
+		player_obj.look(target)
 
-def get(arg):
-	if arg == "":
+def talkTo(npc):
+	if npc == "":
+		print("Talk to whom?")
+	else:
+		world_obj.talkTo(npc)
+
+def get(item):
+	if item == "":
 		print("Get what?")
 	else:
-		player_obj.pickUpItem(arg)
+		player_obj.pickUpItem(item)
+
+def give(item, npc):
+	if item == "":
+		print("Give what?")
+	elif npc == "":
+		print("Give to whom?")
+	else:
+		player_obj.give(item, npc)
 
 def quit():
 	print('Goodbye!')
 	exit()
 
-def parseCommand(command, arg=""):
-	if command == "go": go(arg)
+def parseCommand(command, arg1="", arg2=""):
+	if command == "go": go(arg1)
 	elif command == "n": go("north")
 	elif command == "s": go("south")
 	elif command == "e": go("east")
 	elif command == "w": go("west")
 
-	elif (command == "l") or (command == "look"): look(arg)
-
-	elif command == "get": get(arg)
-
+	elif (command == "l") or (command == "look"): look(arg1)
+	elif command == "talk": talkTo(arg1)
 	elif (command == "i") or (command == "inv"): player_obj.displayInventory()
+	elif command == "get": get(arg1)
+	elif command == "give": give(arg1, arg2)
+
 	elif command == "help": printHelp()
-	
 	elif command == "quit": quit()
 	else:
 		print("...")
 
+def getArg(command, argNum):
+	if(len(command) > argNum):
+		return command[argNum]
+	return ""
 
-name = input("Please enter your name: ")
 world_obj = world.World()
-player_obj = player.Player(world_obj, name)
+player_obj = player.Player(world_obj)
 
 print("")
-print("Greetings, " + name + "!")
-print("Type 'help' for help.")
+print("Welcome to an xkcd adventure.")
+print("Type 'help' for a list of commands.")
 
 while(True):
 	print("")
 
 	command = input(">> ").split(" ")
-	if len(command) == 2:
-		parseCommand(command[0], command[1])
-	else:
-		parseCommand(command[0])
+	parseCommand(command[0], getArg(command, 1), getArg(command, 2))

@@ -62,16 +62,6 @@ class World:
 			print(element.name + ", ", end="")
 		print(myList[-1].name + ".")
 
-	def look(self, targetName, player):
-		if self.lookNpc(targetName) == True:
-			return
-		if self.lookGround(targetName) == True:
-			return
-		if player.lookInventory(targetName) == True:
-			return
-
-		print("That is not here.")
-
 	def lookNpc(self, npcName):
 		npc = self.getNpc(npcName)
 		if npc != None:
@@ -102,33 +92,52 @@ class World:
 		return None
 
 	def createRooms(self):
-		north = self.Room()
-		south = self.Room()
-		east = self.Room()
-		west = self.Room()
-		center = self.Room()
+		meganHouse = self.Room()
+		stallmanHouse = self.Room()
+		cueballHouse = self.Room()
+		street0_0 = self.Room()
+		street0_1 = self.Room()
+		street0_2 = self.Room()
+		street1_0 = self.Room()
+		street1_2 = self.Room()
+		street2_0 = self.Room()
+		street2_1 = self.Room()
+		street2_2 = self.Room()
+		street2_3 = self.Room()
+		street3_0 = self.Room()
+		street3_1 = self.Room()
+		street3_2 = self.Room()
+		street3_3 = self.Room()
+		street4_1 = self.Room()
+		street4_2 = self.Room()
 
-		north.name = "North"
-		north.desc = "The north room."
-		north.exits.append({"room": center, "localName": "South"})
+		meganHouse.name = "Megan's house"
+		meganHouse.desc = "The entire house is filled waist deep in playpen balls.  Megan stands in a corner, throwing balls across the room.  She seems to be sorting them by colour."
+		meganHouse.exits.append({"room": street0_0, "localName": "out"})
 
-		south.name = "South"
-		south.desc = "The south room."
-		south.exits.append({"room": center, "localName": "North"})
+		stallmanHouse.name = "Richard Stallman's house"
+		stallmanHouse.desc = ""
+		stallmanHouse.exits.append({"room": street0_1, "localName": "out"})
 
-		east.name = "East"
-		east.desc = "The east room."
-		east.exits.append({"room": center, "localName": "West"})
+		cueballHouse.name = "Cueball's house"
+		cueballHouse.desc = "You have finally made it inside.  Congratulations!"
 
-		west.name = "West"
-		west.desc = "The west room."
-		west.exits.append({"room": center, "localName": "East"})
+		street0_0.name = "In front of Megan's house"
+		street0_0.desc = "You stand on the street in front of Megan's house."
+		street0_0.exits.append({"room": meganHouse, "localName": "house"})
+		street0_0.exits.append({"room": street0_1, "localName": "east"})
+		street0_0.exits.append({"room": street1_0, "localName": "south"})
 
-		center.name = "Center"
-		center.desc = "The center room."
-		center.exits.append({"room": north, "localName": "North"})
-		center.exits.append({"room": south, "localName": "South"})
-		center.exits.append({"room": east, "localName": "East"})
-		center.exits.append({"room": west, "localName": "West"})
+		street0_1.name = "In front of Stallman's house"
+		street0_1.desc = "You stand on the street in front of Richard Stallman's house."
+		street0_1.exits.append({"room": stallmanHouse, "localName": "house"})
+		street0_1.exits.append({"room": street0_0, "localName": "east"})
+		street0_1.exits.append({"room": street0_2, "localName": "west"})
 
-		self.curRoom = center
+		street0_2.name = "In front of Cueball's house"
+		street0_2.desc = "You stand on the street in front of your house."
+		street0_2.exits.append({"room": cueballHouse, "localName": "house"})
+		street0_2.exits.append({"room": street0_1, "localName": "west"})
+		street0_2.exits.append({"room": street1_2, "localName": "south"})
+
+		self.curRoom = street0_2

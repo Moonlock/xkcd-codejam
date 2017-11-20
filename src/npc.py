@@ -4,9 +4,9 @@ class Npc(object):
 		self.new = True
 		self.intro = ""
 		self.dialog = ""
-		self.acceptItem = ""
-		self.giveItem = ""
-		self.declineItem = ""
+		self.declineDialog = ""
+		self.acceptDialog = ""
+		self.giveDialog = ""
 		self.wantedItem = None
 		self.returnedItem = None
 
@@ -16,13 +16,13 @@ class Npc(object):
 
 	def ReceiveItem(self,givenItem):
 		if self.item == givenItem
-			print (self.acceptItem)
+			print (self.acceptDialog)
 			self.giveItem()
 		else 
-			print (self.declineItem)
+			print (self.declineDialog)
 
 	def giveItem(self):
-		print(self.giveItem)
+		print(self.giveDialog)
 
 
 class BeretGuy(Npc):
