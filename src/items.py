@@ -39,20 +39,22 @@ class Reply(Item):
 
 class Laptop(Item):
 	def __init__(self):
-		super(Laptop,self).__init__("Laptop","Megan's Laptop. It's covered with stickers.")
+		super(Laptop,self).__init__("Laptop","Megan's Laptop. It's covered with stickers.")	
 
 class Kindle(Item):
 	def __init__(self):
-		super(Kindle,self).__init__("Kindle","Wholly remarkable! An electronic book.")
+		super(Kindle,self).__init__("Kindle","Wholly remarkable! An electronic Book.")			
 
 class Lockpicks(Item):
 	def __init__(self):
 		super(Lockpicks,self).__init__("Lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")
-
-	def use(self, world):
+  def use(self, world):
 		if(world.curRoom.name == "In front of Stallman's house"):
 			world.unlockStallman()
 			print("You pick the lock to Stallman's door.  You hope he won't mind.")
 		else:
 			print("You can't use that here.")
 
+class Lint(Item):
+	def __init__(self):
+		super(Lint,self).__init__("Lint","A bit of lint you found in your pocket. Hopefully someone wants this because its all you have.")	
