@@ -49,7 +49,7 @@ class Player:
 			print("You don't have that.")
 			return False
 
-		item.useOn(self)
+		item.use(self.world)
 		return True
 
 	def getItem(self, itemName):

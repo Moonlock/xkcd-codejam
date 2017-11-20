@@ -13,7 +13,7 @@ def printHelp():
 	print("	l/look")
 	print("	l/look	[item/npc]")
 	print("	talk	[npc]")
-	print("	get	[item]")
+	print("	use	[item]")
 	print("	give	[item] [npc]")
 	print("	i/inv")
 	print("	help")
@@ -43,6 +43,12 @@ def get(item):
 	else:
 		player_obj.pickUpItem(item)
 
+def use(arg):
+	if arg == "":
+		print("Use what?")
+	else:
+		player_obj.use(arg)
+
 def give(item, npc):
 	if item == "":
 		print("Give what?")
@@ -67,6 +73,7 @@ def parseCommand(command, arg1="", arg2=""):
 	elif (command == "i") or (command == "inv"): player_obj.displayInventory()
 	elif command == "get": get(arg1)
 	elif command == "give": give(arg1, arg2)
+	elif command == "use": use(arg1)
 
 	elif command == "help": printHelp()
 	elif command == "quit": quit()

@@ -15,10 +15,10 @@ class Npc(object):
 		self.new = False
 
 	def ReceiveItem(self,givenItem):
-		if self.item == givenItem
+		if self.item == givenItem:
 			print (self.acceptDialog)
 			self.giveItem()
-		else 
+		else:
 			print (self.declineDialog)
 
 	def giveItem(self):
