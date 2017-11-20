@@ -27,25 +27,32 @@ class A_loof(Item):
 
 class Sword(Item):
 	def __init__(self):
-		super(A_loof,self).__init__("Sword","A mystical weapon bestowed upon you by Stallman.")
+		super(Sword,self).__init__("Sword","A mystical weapon bestowed upon you by Stallman.")
 		
 class Message(Item):
 	def __init__(self):
-		super(A_loof,self).__init__("Message","A message for Bob. Eve might be interested in this.")	
+		super(Message,self).__init__("Message","A message for Bob. Eve might be interested in this.")
 
 class Reply(Item):
 	def __init__(self):
-		super(A_loof,self).__init__("Reply","A message from Bob to Alice. Eve might want this.")
+		super(Reply,self).__init__("Reply","A message from Bob to Alice. Eve might want this.")
 
 class Laptop(Item):
 	def __init__(self):
-		super(A_loof,self).__init__("Laptop","Megan's Laptop. It's covered with Stickers.")	
+		super(Laptop,self).__init__("Laptop","Megan's Laptop. It's covered with stickers.")
 
 class Kindle(Item):
 	def __init__(self):
-		super(A_loof,self).__init__("Kindle","Wholly remarkable! An electronic Book.")			
+		super(Kindle,self).__init__("Kindle","Wholly remarkable! An electronic book.")
 
 class Lockpicks(Item):
 	def __init__(self):
-		super(A_loof,self).__init__("Lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")	
+		super(Lockpicks,self).__init__("Lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")
+
+	def use(self, world):
+		if(world.curRoom.name == "In front of Stallman's house"):
+			world.unlockStallman()
+			print("You pick the lock to Stallman's door.  You hope he won't mind.")
+		else:
+			print("You can't use that here.")
 
