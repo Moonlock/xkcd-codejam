@@ -1,6 +1,8 @@
 from __future__ import print_function
 import string
+
 import npc
+import items
 
 # Fix input() vs raw_input() mess
 try: input = raw_input
@@ -11,7 +13,7 @@ class Player:
 	def __init__(self, world):
 		self.world = world
 
-		self.items = []
+		self.items = [items.Lint()]
 
 	def displayInventory(self):
 		print("")
@@ -46,12 +48,9 @@ class Player:
 
 	def getItem(self, itemName):
 		for item in self.items:
-			if string.find(item.name, itemName) == 0:
+			if string.find(item.name.lower(), itemName.lower()) == 0:
 				return item
 		return None
-
-	def removeItem(self, item):
-		self.items.remove(item)
 
 	def lookInventory(self, itemName):
 		item = self.getItem(itemName)
@@ -71,7 +70,8 @@ class Player:
 			print("That person isn't here.")
 			return
 
-		npc.receiveItem(item)
+		if npc.receiveItem(item, self):
+			self.items.remove(item)
 
 	def talkTo(self, npcName):
 		npc = self.world.getNpc(npcName)
@@ -79,4 +79,6 @@ class Player:
 			npc.speak(self)
 		else:
 			print("That person is not here.")
-		
+
+	def receiveInfo(self):
+		self.world.hasInfo = True

@@ -7,7 +7,7 @@ class Item(object):
 	def use(self, world):
 		print("You can't use that here.")
 
-	def ShowDesc(self):
+	def printDescription(self):
 		print (self.desc)
 
 class Key(Item):
@@ -22,37 +22,37 @@ class Key(Item):
 
 class A_loof(Item):
 	def __init__(self):
-		super(A_loof,self).__init__("A loof","You have no idea what this is, but something tells you it wants to escape your grasp.")
+		super(A_loof,self).__init__("loof","You have no idea what this is, but something tells you it wants to escape your grasp.")
 
 class Sword(Item):
 	def __init__(self):
-		super(Sword,self).__init__("Sword","A mystical weapon bestowed upon you by Stallman.")
+		super(Sword,self).__init__("sword","A mystical weapon bestowed upon you by Stallman.")
 		
 class Message(Item):
 	def __init__(self):
-		super(Message,self).__init__("Message","A message for Bob. Eve might be interested in this.")
+		super(Message,self).__init__("message","A message for Bob. Eve might be interested in this.")
 
 class Reply(Item):
 	def __init__(self):
-		super(Reply,self).__init__("Reply","A message from Bob to Alice. Eve might want this.")
+		super(Reply,self).__init__("reply","A message from Bob to Alice. Eve might want this.")
 
 class Laptop(Item):
 	def __init__(self):
-		super(Laptop,self).__init__("Laptop","Megan's Laptop. It's covered with stickers.")	
+		super(Laptop,self).__init__("laptop","Megan's Laptop. It's covered with stickers.")	
 
 	def use(self, world):
-		if(world.curRoom.name == "In front of Cueball's house"):
+		if(world.curRoom.name == "In front of Cueball's apartment"):
 			world.unlockCueball()
 		else:
 			print("You can't use that here.")
 
 class Kindle(Item):
 	def __init__(self):
-		super(Kindle,self).__init__("Kindle","Wholly remarkable! An electronic Book.")			
+		super(Kindle,self).__init__("Kindle","A wholly remarkable electronic Book.")			
 
 class Lockpicks(Item):
 	def __init__(self):
-		super(Lockpicks,self).__init__("Lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")
+		super(Lockpicks,self).__init__("lockpicks","Eve gave you these lockpicks. You get the feeling she has plenty.")
 	def use(self, world):
 		if(world.curRoom.name == "In front of Stallman's house"):
 			world.unlockStallman()
@@ -62,4 +62,4 @@ class Lockpicks(Item):
 
 class Lint(Item):
 	def __init__(self):
-		super(Lint,self).__init__("Lint","A bit of lint you found in your pocket. Hopefully someone wants this because its all you have.")	
+		super(Lint,self).__init__("lint","A bit of lint you found in your pocket. Hopefully someone wants this because its all you have.")	

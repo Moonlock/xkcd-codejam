@@ -87,6 +87,9 @@ player_obj = player.Player(world_obj)
 
 print("")
 print("Welcome to an xkcd adventure.")
+print("You are locked out of your apartment.  \nIf you had a laptop, you could ssh into your Mac and use the speech synth \n" +
+	  "to tell her what happened.  Maybe someone will let you borrow theirs.")
+print("")
 print("Type 'help' for a list of commands.")
 
 while(True):
@@ -94,3 +97,7 @@ while(True):
 
 	command = input(">> ").split(" ")
 	parseCommand(command[0], getArg(command, 1), getArg(command, 2))
+
+	if(world_obj.curRoom.name == "Cueball's apartment"):
+		print("You have finally made it inside.  Congratulations!")
+		exit()

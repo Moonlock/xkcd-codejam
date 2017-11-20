@@ -80,7 +80,7 @@ class World:
 
 	def getItem(self, itemName):
 		for item in self.curRoom.items:
-			if string.find(item.name, itemName) == 0:
+			if string.find(item.name.lower(), itemName.lower()) == 0:
 				return item
 		return None
 
@@ -89,7 +89,7 @@ class World:
 
 	def getNpc(self, npcName):
 		for npc in self.curRoom.npcs:
-			if string.find(npc.name, npcName) == 0:
+			if string.find(npc.name.lower(), npcName.lower()) == 0:
 				return npc
 		return None
 
@@ -106,7 +106,7 @@ class World:
 		else:
 			print("You ssh into your Mac and send a message that you are locked outside.")
 			print("You wait several minutes, but the door doesn't open.")
-			print("You realize the volume must be too low, but you don't know how to set the volume from command line.  Maybe someone around here does?")
+			print("You realize the volume must be too low, but you don't know how to set the volume from \ncommand line.  Maybe someone around here does?")
 
 	def createRooms(self):
 		meganHouse = self.Room()
@@ -129,18 +129,18 @@ class World:
 		street4_2 = self.Room()
 
 		meganHouse.name = "Megan's house"
-		meganHouse.desc = "The entire house is filled waist deep in playpen balls.  Megan stands in a corner, throwing balls across the room.  She seems to be sorting them by colour."
+		meganHouse.desc = "The entire house is filled waist deep in playpen balls.  Megan stands in a corner, \nthrowing balls across the room.  She seems to be sorting them by colour."
 		meganHouse.exits.append({"room": street0_0, "localName": "out"})
 		meganHouse.npcs.append(npc.Megan())
 
 		self.stallmanHouse.name = "Richard Stallman's house"
-		self.stallmanHouse.desc = ""
+		self.stallmanHouse.desc = "Stallman stands at the ready, a katana in each hand."
 		self.stallmanHouse.exits.append({"room": street0_1, "localName": "out"})
 		self.stallmanHouse.npcs.append(npc.Stallman())
 		self.stallmanHouse.isLocked = True
 
-		self.cueballHouse.name = "Cueball's house"
-		self.cueballHouse.desc = "You have finally made it inside.  Congratulations!"
+		self.cueballHouse.name = "Cueball's apartment"
+		self.cueballHouse.desc = "You are home."
 		self.cueballHouse.exits.append({"room": street0_2, "localName": "out"})
 		self.cueballHouse.isLocked = True
 
@@ -156,9 +156,9 @@ class World:
 		street0_1.exits.append({"room": street0_2, "localName": "east"})
 		street0_1.exits.append({"room": street0_0, "localName": "west"})
 
-		street0_2.name = "In front of Cueball's house"
-		street0_2.desc = "You stand on the street in front of your house."
-		street0_2.exits.append({"room": self.cueballHouse, "localName": "house"})
+		street0_2.name = "In front of Cueball's apartment"
+		street0_2.desc = "You stand on the street in front of your apartment building.  You need some way of \ngetting your roommate's attention."
+		street0_2.exits.append({"room": self.cueballHouse, "localName": "home"})
 		street0_2.exits.append({"room": street1_2, "localName": "south"})
 		street0_2.exits.append({"room": street0_1, "localName": "west"})
 
